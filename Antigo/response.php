@@ -11,7 +11,7 @@ if (mysqli_connect_errno()) {
    printf("Connect failed: %s\n", mysqli_connect_error());
    exit();
 }
-$sql = "SELECT * FROM `treeview_items` ";
+$sql = "SELECT * FROM `controle_versao`";
 $res = mysqli_query($conn, $sql) or die("database error:" . mysqli_error($conn));
 //iterate on results row and create new index array of data
 while ($row = mysqli_fetch_assoc($res)) {
@@ -30,7 +30,7 @@ foreach ($data as $key => &$item) {
 
 // Set items as children of the relevant parent item.
 foreach ($data as $key => &$item)
-   if ($item['parent_ID'])
+   if ($item['parent_ID'] == 3 || $item['parent_ID']  == 1 || $item['parent_ID']  == 5)
       $itemsByReference[$item['parent_ID']]['children'][] = &$item;
 
 // Remove items that were added to parents elsewhere:
