@@ -17,7 +17,6 @@
     <script>
         let tableVersion = <?php include("responseVersion.php") ?>;
         let tableItem = <?php include("responseItem.php") ?>;
-        console.log(tableItem)
 
         let treeView = document.getElementById('tree_view');
         let ulBase = document.createElement('ul');
