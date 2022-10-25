@@ -13,6 +13,14 @@
 </head>
 
 <body>
+    <table>
+        <tr>
+            <td>Ralf</td>
+            <td>26</td>
+            <td>Designer</td>
+        </tr>
+    </table>
+
     <div id="tree_view"></div>
     <script>
         let tableVersion = <?php include("responseVersion.php") ?>;
@@ -25,24 +33,31 @@
         function GenerateTreeView(tableVersion, tableItem) {
             tableVersion.forEach(version => {
                 let liVersion = document.createElement('li');
-                let ulChanges = document.createElement('ul');
+                let tableVersion = document.createElement('table');
                 liVersion.innerHTML = version.VERSAO;
-                ulBase.append(liVersion);
-                ulBase.append(ulChanges);
+
                 tableItem.forEach(change => {
                     if (version.ID == change.ID_CONTROLE_VERSAO) {
-                        ulChanges.className = 'nested';
+                        let trChanges = document.createElement('tr');
+                        let tdSequencial = document.createElement('td');
+                        tdSequencial.innerHTML = change.SEQUENCIAL;
+                        trChanges.append(tdSequencial);
+
+                        trChanges.className = 'nested';
                         liVersion.className = 'liVersion';
-                        let liChange = document.createElement('li');
-                        liChange.className = 'liChange';
-                        liChange.innerHTML = change.DESCRICAO;
-                        ulChanges.append(liChange);
-                        liVersion.append(ulChanges);
-                        ulBase.append(liVersion);
+
+                        let tdChange = document.createElement('td');
+                        tdChange.className = 'liChange';
+                        tdChange.innerHTML = change.DESCRICAO;
+                        trChanges.append(tdChange);
+
+                        tableVersion.append(trChanges);
                     }
+                    liVersion.append(tableVersion);
                 })
+                ulBase.append(liVersion);
+                treeView.append(ulBase);
             });
-            treeView.append(ulBase);
         }
 
         GenerateTreeView(tableVersion, tableItem);
