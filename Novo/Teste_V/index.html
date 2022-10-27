@@ -19,11 +19,22 @@
                 content: "\2295";
                 font-size: 20px;
             }
+            #treeview .open::before {
+                content: "\2295";
+                font-size: 20px;
+            }
 
             #treeview .open{
                 cursor: pointer;
             }
         </style>
+        <script>
+            $(document).ready(function(){
+                $("#treeview .open").click(function(){
+                    $(this).toggleClass("close open");
+                })
+            });
+        </script>
     </head>
 
     <body>
