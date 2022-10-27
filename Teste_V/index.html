@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title id="Description">jQuery Tree</title>
+        <meta name="viewport" content="width=device-width">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/j query.min"></script>
+        <link rel="stylesheet" src="style.css"/>
+        <style>
+            #treeview, #treeview ul {
+                list-style-type: none;
+            }
+
+            #treeview .open > ul {
+                display: none;
+            }
+
+            #treeview .open::before {
+                content: "\2295";
+                font-size: 20px;
+            }
+
+            #treeview .open{
+                cursor: pointer;
+            }
+        </style>
+    </head>
+
+    <body>
+        <ul id="treeview">
+            <li class="open">Level 1
+                <ul>
+                    <li class="open">Level 1.1
+                        <ul>
+                            <li>Level 1.1.1</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li class="open">Level 2
+                <ul>
+                    <li>Level 2.1</li>
+                    <li class="open">Level 2.2
+                        <ul>
+                            <li>Level 2.2.1</li>
+                        </ul>
+                    </li>
+                </ul>
+            </li>
+            <li>Level 3</li>
+        </ul>
+    </body>
+</html>
